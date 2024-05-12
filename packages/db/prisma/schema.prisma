@@ -19,6 +19,10 @@ model User{
   email String? @unique
   number String @unique
   password String
+  Balance Balance[]
+  OnRampTransaction OnRampTransaction[]
+    sentTransfer p2pTransfer[] @relation(name: "SenderUserRelation")
+  receivedTransfer p2pTransfer[] @relation(name: "ReceiverUserRelation")
 }
 
 model Merchant{
@@ -28,7 +32,47 @@ model Merchant{
   auth_type AuthType
 }
 
+
+// to keep track of all the balance of the users
+model Balance{
+ id Int @id @default(autoincrement())
+ userId Int @unique
+ amount Int
+ locked Int
+ user User @relation(fields: [userId], references: [id])
+}
+
+// transaction jo user bahar se add kar raha hai apne app mai 
+// similarly we can have OffRampTransaction
+model OnRampTransaction{
+  id Int @id @default(autoincrement())
+  status OnRampStatus
+  token String @unique
+  provider String
+  amount Int
+  startTime DateTime
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+
+}
+
+model p2pTransfer{
+  id Int @id @default(autoincrement())
+  amount Int
+  timestamp DateTime
+  senderUserId Int
+  senderUser User @relation(name:"SenderUserRelation",fields: [senderUserId],references: [id])
+  receiverUserId Int
+  receiverUser User @relation(name:"ReceiverUserRelation",fields: [receiverUserId],references: [id])
+}
+
 enum AuthType{
   GOOGLE
   GITHUB
+}
+
+enum OnRampStatus{
+  SUCCESS
+  FAILED
+  PROCESSING
 }

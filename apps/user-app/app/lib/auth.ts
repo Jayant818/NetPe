@@ -29,10 +29,12 @@ export const authOptions = {
 					},
 				});
 
+				console.log("existing user", existingUser);
+
 				if (existingUser) {
 					// compare the passwords
 					const passwordValidation = await bcrypt.compare(
-						hashedPassword,
+						credentials.password,
 						existingUser.password
 					);
 					if (passwordValidation) {
@@ -42,6 +44,7 @@ export const authOptions = {
 							email: existingUser.number,
 						};
 					} else {
+						console.log("result", passwordValidation);
 						return null;
 					}
 				}
