@@ -4,6 +4,7 @@
 	"pipeline": {
 		"build": {
 			"dependsOn": ["^build"],
+			"env": ["JWT_SECRET", "NEXTAUTH_URL"],
 			"outputs": [".next/**", "!.next/cache/**"]
 		},
 		"lint": {

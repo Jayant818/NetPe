@@ -36,7 +36,7 @@ const Page = async () => {
 					All Users
 				</h3>
 
-				{users.map((u) => (
+				{users.map((u:any) => (
 					<div
 						key={u.id}
 						className="flex justify-between items-center border-b-2 pb-1 px-4"

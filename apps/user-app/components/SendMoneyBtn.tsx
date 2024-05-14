@@ -1,5 +1,5 @@
 "use client";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const SendMoneyBtn = ({ number }: { number: string }) => {
 	const router = useRouter();

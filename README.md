@@ -3,7 +3,7 @@
 # Description
 
 **`Netpe`** is a web-based version of the Paytm App.
-It offers follwoing Functionalities.
+It offers following Functionalities.
 
 - Sending Money from your wallet to other person wallet
 - Receiving Money from Your Bank
@@ -16,19 +16,25 @@ It offers follwoing Functionalities.
 ## ScreenShots
 
 Homepage
-![alt text](image-1.png)
+![alt text](assests/image-1.png)
 Login
-![alt text](image-2.png)
+![alt text](assests/image-2.png)
 Signup
-![alt text](image-3.png)
+![alt text](assests/image-3.png)
 Dashboard
-![alt text](image-4.png)
+![alt text](assests/image-4.png)
 Transfer Money
-![alt text](image-5.png)
+![alt text](assests/image-5.png)
 All Txns
-![alt text](image-6.png)
+![alt text](assests/image-6.png)
 P2P Txn
-![alt text](image-7.png)
+![alt text](image.png)
+Basic Structure of App
+![alt text](image-1.png)
+Process of Adding Money to Netpe from your Bank Account
+![alt text](image-2.png)
+Schema of our App
+![alt text](image-3.png)
 
 ## Prerequisites
 
