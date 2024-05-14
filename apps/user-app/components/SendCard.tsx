@@ -7,8 +7,8 @@ import { Card } from "@repo/ui/card";
 import { useState } from "react";
 import { p2pTransfer } from "../app/lib/actions/p2pTransfer";
 
-export function SendCard() {
-	const [number, setNumber] = useState("");
+export function SendCard({ number }: { number?: string }) {
+	const [num, setNumber] = useState(number || "");
 	const [amount, setAmount] = useState("");
 
 	return (
@@ -22,6 +22,7 @@ export function SendCard() {
 							onChange={(value) => {
 								setNumber(value);
 							}}
+							value={num}
 						/>
 						<TextInput
 							placeholder={"Amount"}
@@ -33,7 +34,8 @@ export function SendCard() {
 						<div className="pt-4 flex justify-center">
 							<Button
 								onClick={async () => {
-									await p2pTransfer(number, Number(amount) * 100);
+									await p2pTransfer(num, Number(amount) * 100);
+									alert("Sent");
 								}}
 							>
 								Send

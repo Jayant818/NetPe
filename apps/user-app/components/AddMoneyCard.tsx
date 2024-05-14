@@ -53,7 +53,10 @@ const AddMoneyCard = () => {
 					<Button
 						onClick={async () => {
 							await createOnRamptxn(Amount, provider);
-							window.location.href = redirectUrl || "";
+
+							// window.location.href = redirectUrl || "";
+							window.open(redirectUrl || "", "_blank");
+							alert("Money Received, Refresh!!!!!");
 						}}
 					>
 						Add Money

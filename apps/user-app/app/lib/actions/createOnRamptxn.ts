@@ -25,9 +25,21 @@ export default async function createOnRamptxn(
 			amount,
 			provider,
 			startTime: new Date(),
-			status: "PROCESSING",
+			status: "SUCCESS",
+			// status: "PROCESSING",
 			token,
 			userId: Number(userId),
+		},
+	});
+	// SKIPPING WEBHOOK PART
+	await prisma.balance.update({
+		where: {
+			id: Number(userId),
+		},
+		data: {
+			amount: {
+				increment: amount,
+			},
 		},
 	});
 }
