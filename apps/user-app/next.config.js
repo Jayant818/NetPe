@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  transpilePackages: ["@repo/ui"],
+	transpilePackages: ["@repo/ui"],
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "images.ctfassets.net",
+				port: "",
+			},
+		],
+	},
 };

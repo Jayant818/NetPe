@@ -1,10 +1,10 @@
 import React from "react";
-import AddMoneyCard from "../../../components/AddMoneyCard";
-import { BalanceCard } from "../../../components/BalanceCard";
-import OnRampTransactions from "../../../components/OnRampTransactions";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
+import { authOptions } from "../../../lib/auth";
+import AddMoneyCard from "../../../../components/AddMoneyCard";
+import { BalanceCard } from "../../../../components/BalanceCard";
+import OnRampTransactions from "../../../../components/OnRampTransactions";
 
 async function getBalance() {
 	const session = await getServerSession(authOptions);
@@ -53,7 +53,10 @@ const page = async () => {
 				<div>
 					<BalanceCard amount={balance.amount} locked={balance.locked} />
 					<div className="pt-4">
-						<OnRampTransactions transactions={transactions} />
+						<OnRampTransactions
+							transactions={transactions}
+							title="Recent Transactions"
+						/>
 					</div>
 				</div>
 			</div>

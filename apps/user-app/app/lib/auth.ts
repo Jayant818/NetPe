@@ -1,6 +1,12 @@
 import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import { pages } from "next/dist/build/templates/app-page";
+
+const randomNum1 = Math.random() * 100 + 1;
+const randomNum2 = Math.random() * 800 + 1;
+
+const randNum = Math.floor(randomNum1 + randomNum2);
 
 export const authOptions = {
 	providers: [
@@ -41,7 +47,8 @@ export const authOptions = {
 						return {
 							id: existingUser.id.toString(),
 							name: existingUser.name,
-							email: existingUser.number,
+							email: existingUser.email,
+							number: existingUser.number,
 						};
 					} else {
 						console.log("result", passwordValidation);
@@ -53,13 +60,31 @@ export const authOptions = {
 						data: {
 							number: credentials.phone,
 							password: hashedPassword,
+							name: credentials.name,
+							email: credentials.email,
+							Balance: {
+								create: {
+									amount: 1000000,
+									locked: 0,
+								},
+							},
+							OnRampTransaction: {
+								create: {
+									startTime: new Date(),
+									status: "SUCCESS",
+									amount: 1000000,
+									token: randNum.toString(),
+									provider: "HDFC Bank",
+								},
+							},
 						},
 					});
 
 					return {
 						id: newUser.id.toString(),
 						name: newUser.name,
-						email: newUser.number,
+						email: newUser.email,
+						number: newUser.number,
 					};
 				} catch (e) {
 					console.log(e);
@@ -74,5 +99,8 @@ export const authOptions = {
 			session.user.id = token.sub;
 			return session;
 		},
+	},
+	pages: {
+		signIn: "/Login",
 	},
 };

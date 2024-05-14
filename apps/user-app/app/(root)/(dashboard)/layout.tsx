@@ -1,19 +1,26 @@
+import { getServerSession } from "next-auth";
 import {
 	HomeIcon,
 	P2PTransferIcon,
 	TransactionsIcon,
 	TransferIcon,
-} from "../../components/Icons/icons";
-import { SidebarItem } from "../../components/SidebarItem";
+} from "../../../components/Icons/icons";
+import { SidebarItem } from "../../../components/SidebarItem";
+import { authOptions } from "../../lib/auth";
+import { redirect } from "next/navigation";
 
-export default function Layout({
+export default async function Layout({
 	children,
 }: {
 	children: React.ReactNode;
-}): JSX.Element {
+}) {
+	const session = await getServerSession(authOptions);
+	if (!session?.user) {
+		redirect("/");
+	}
 	return (
-		<div className="flex">
-			<div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28">
+		<div className="flex h-[92.5vh]">
+			<div className="w-72 border-r border-slate-300 min-h-[100%] mr-4 pt-28">
 				<div>
 					<SidebarItem href={"/dashboard"} icon={<HomeIcon />} title="Home" />
 					<SidebarItem
