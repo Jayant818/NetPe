@@ -32,7 +32,7 @@ export async function p2pTransfer(to: string, amount: number) {
 
 	// Do the operations in a txn
 
-	await prisma.$transaction(async (tx) => {
+	await prisma.$transaction(async (tx: any): Promise<any> => {
 		// Update locks the txn
 		// prisma doesn't provide lock functionality so we have to it this way using raw query
 		//
