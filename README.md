@@ -28,13 +28,13 @@ Transfer Money
 All Txns
 ![alt text](assests/image-6.png)
 P2P Txn
-![alt text](image.png)
+![alt text](assests/image10.png)
 Basic Structure of App
-![alt text](image-1.png)
+![alt text](assests/image-11.png)
 Process of Adding Money to Netpe from your Bank Account
-![alt text](image-2.png)
+![alt text](assests/image-12.png)
 Schema of our App
-![alt text](image-3.png)
+![alt text](assests/image-13.png)
 
 ## Prerequisites
 

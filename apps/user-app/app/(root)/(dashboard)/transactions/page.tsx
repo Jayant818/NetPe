@@ -2,24 +2,7 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import prisma from "@repo/db/client";
 import { authOptions } from "../../../lib/auth";
-import AddMoneyCard from "../../../../components/AddMoneyCard";
-import { BalanceCard } from "../../../../components/BalanceCard";
 import OnRampTransactions from "../../../../components/OnRampTransactions";
-import { Session } from "inspector";
-
-async function getBalance() {
-	const session = await getServerSession(authOptions);
-	const balance = await prisma.balance.findFirst({
-		where: {
-			userId: Number(session?.user?.id),
-		},
-	});
-
-	return {
-		amount: balance?.amount || 0,
-		locked: balance?.locked || 0,
-	};
-}
 
 async function getOnRampTransactions() {
 	const session = await getServerSession(authOptions);
@@ -29,7 +12,7 @@ async function getOnRampTransactions() {
 		},
 	});
 
-	return txns.map((t) => ({
+	return txns.map((t: any) => ({
 		time: t.startTime,
 		amount: t.amount,
 		status: t.status,
