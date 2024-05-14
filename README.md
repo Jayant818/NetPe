@@ -11,8 +11,6 @@ It offers following Functionalities.
 
 ## Demo
 
-[Live view](https://yuridevat.github.io/) of the project.
-
 ## ScreenShots
 
 Homepage
